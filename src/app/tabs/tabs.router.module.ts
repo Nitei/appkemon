@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
 import { PokeListPage } from '../poke-list/poke-list.page';
-import { PokeStatsPage } from '../poke-stats/poke-stats.page';
-import { PokeFavoritesPage } from '../poke-favorites/poke-favorites.page';
 
 export const routes: Routes = [
   {
@@ -20,17 +18,7 @@ export const routes: Routes = [
         path: 'pokelist',
         outlet: 'pokelist',
         component: PokeListPage,
-      },
-      {
-        path: 'pokestats',
-        outlet: 'pokestats',
-        component: PokeStatsPage,
-      },
-      {
-        path: 'pokefavorites',
-        outlet: 'pokefavorites',
-        component: PokeFavoritesPage,
-      },
+      }
     ]
   },
   {

@@ -6,9 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
+import { PokeListPageModule } from '../poke-list/poke-list.module';
 
 @NgModule( {
   imports: [
+    PokeListPageModule,
     IonicModule,
     CommonModule,
     FormsModule,

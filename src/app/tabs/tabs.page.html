@@ -1,15 +1,7 @@
-<!-- <app-header></app-header> -->
-
 <ion-tabs>
 
   <ion-tab tab="pokelist">
     <ion-router-outlet name="pokelist"></ion-router-outlet>
-  </ion-tab>
-  <ion-tab tab="pokestats">
-    <ion-router-outlet name="pokestats"></ion-router-outlet>
-  </ion-tab>
-  <ion-tab tab="pokefavorites">
-    <ion-router-outlet name="pokefavorites"></ion-router-outlet>
   </ion-tab>
 
   <ion-tab-bar slot="bottom">
@@ -19,16 +11,5 @@
       <ion-label>Lista</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="pokestats" href="/tabs/(pokestats:pokestats)">
-      <ion-icon name="stats"></ion-icon>
-      <ion-label>Stats</ion-label>
-    </ion-tab-button>
-
-    <ion-tab-button tab="pokefavorites" href="/tabs/(pokefavorites:pokefavorites)">
-      <ion-icon name="heart"></ion-icon>
-      <ion-label>Fav</ion-label>
-    </ion-tab-button>
-
   </ion-tab-bar>
-
 </ion-tabs>

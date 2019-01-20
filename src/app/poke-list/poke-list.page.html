@@ -6,10 +6,11 @@
 
 <ion-content slot="start">
   <ion-list lines="inset">
-    <ion-item *ngFor="let pokemon of lista?.results">
-      <ion-label>
-        <h2>{{pokemon.name}}</h2>
-      </ion-label>
+    <ion-item *ngFor="let pokemon of lista?.results; let indice = index">
+      <ion-avatar slot="start">
+        <img src="{{urlAvatar}}{{indice+1}}.png">
+      </ion-avatar>
+      <ion-label>{{pokemon.name}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

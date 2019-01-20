@@ -9,15 +9,15 @@ import { PokeService } from '../poke-service/poke.service';
 } )
 export class PokeListPage implements OnInit {
   lista: object;
+  url = 'https://pokeapi.co/api/v2/pokemon/';
+  urlAvatar = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
-  constructor ( private route: ActivatedRoute, private servicio: PokeService ) {
-
-  }
+  constructor ( private route: ActivatedRoute, private servicio: PokeService ) { }
 
   ngOnInit() {
-    this.servicio.getData( 'https://pokeapi.co/api/v2/pokemon/' ).subscribe( data => {
-      console.log( data );
+    this.servicio.getData( this.url ).subscribe( data => {
       this.lista = data;
+      console.log( data );
     } );
   }
 

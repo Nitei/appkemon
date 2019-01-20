@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { PokeService } from '../poke-service/poke.service';
 
 @Component( {
@@ -9,16 +8,17 @@ import { PokeService } from '../poke-service/poke.service';
 } )
 export class PokeListPage implements OnInit {
   lista: object;
-  url = 'https://pokeapi.co/api/v2/pokemon/';
+  offset = 0; // From pokémon number
+  limit = 807; // Until pokémon number
+
+  urlMas = `https://pokeapi-215911.firebaseapp.com/api/v2/pokemon/?offset=${ this.offset }&limit=${ this.limit }`;
   urlAvatar = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
-  constructor ( private route: ActivatedRoute, private servicio: PokeService ) { }
+  constructor ( private servicio: PokeService ) { }
 
   ngOnInit() {
-    this.servicio.getData( this.url ).subscribe( data => {
-      this.lista = data;
-      console.log( data );
-    } );
+    this.servicio.getData( this.urlMas )
+      .subscribe( data => this.lista = data );
   }
 
 }

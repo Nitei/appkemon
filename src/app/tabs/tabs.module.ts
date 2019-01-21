@@ -7,9 +7,11 @@ import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
 import { PokeListPageModule } from '../poke-list/poke-list.module';
+import { PokeStatsPageModule } from '../poke-stats/poke-stats.module';
 
 @NgModule( {
   imports: [
+    PokeStatsPageModule,
     PokeListPageModule,
     IonicModule,
     CommonModule,

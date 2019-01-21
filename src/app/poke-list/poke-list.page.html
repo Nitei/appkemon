@@ -6,7 +6,7 @@
 
 <ion-content slot="start">
   <ion-list lines="inset">
-    <ion-item *ngFor="let pokemon of lista?.results; let indice = index">
+    <ion-item *ngFor="let pokemon of lista?.results; let indice = index" href="/tabs/(pokelist:pokestats/{{indice+1}}/{{pokemon.name}})">
       <ion-avatar slot="start">
         <img src="{{urlAvatar}}{{indice+1}}.png">
       </ion-avatar>

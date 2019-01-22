@@ -2,27 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { PokeService } from '../poke-service/poke.service';
 
 @Component( {
-  selector: 'app-poke-list',
-  templateUrl: 'poke-list.page.html',
-  styleUrls: [ 'poke-list.page.sass' ]
+  selector: 'app-poke-favorites',
+  templateUrl: './poke-favorites.page.html',
+  styleUrls: [ './poke-favorites.page.sass' ],
 } )
-export class PokeListPage implements OnInit {
-  lista: object;
+export class PokeFavoritesPage implements OnInit {
+  arrayFavoritos: number[];
+  pokeData: object;
   readonly offset = 0; // From pokémon number
-  readonly limit = 807; // Until pokémon number
+  readonly limit = 8; // Until pokémon number
 
   readonly urlMas = `https://pokeapi-215911.firebaseapp.com/api/v2/pokemon/?offset=${ this.offset }&limit=${ this.limit }`;
   readonly urlAvatar = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
-
   constructor ( private servicio: PokeService ) { }
 
-  favorite( fav ) {
+  ngOnInit() {
+  }
+
+  removeFav( fav: number ) {
     this.servicio.setPokeFavorites( fav );
   }
 
-  ngOnInit() {
-    this.servicio.getData( this.urlMas )
-      .subscribe( data => this.lista = data );
+  ionViewWillEnter() {
+    this.arrayFavoritos = this.servicio.pokeFavorites;
+    this.pokeData = this.servicio.getData( this.urlMas );
   }
 
 }

@@ -10,7 +10,7 @@
       <ion-avatar slot="start">
         <img src="{{urlAvatar}}{{indice+1}}.png">
       </ion-avatar>
-      <ion-label>{{pokemon.name}}</ion-label>
+      <ion-label>{{pokemon.name | titlecase}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

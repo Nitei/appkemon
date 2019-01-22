@@ -1,9 +1,53 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title text-center>Poke estadisticas</ion-title>
+    <ion-title>Poke estadisticas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-card>
+    <div text-center>
+      <h1>{{ pokeData?.name | titlecase }}</h1>
+    </div>
+    <ion-slides pager>
+      <ion-slide>
+        <ion-img src="{{pokeData?.sprites.front_default}}"></ion-img>
+      </ion-slide>
+      <ion-slide>
+        <ion-img src="{{pokeData?.sprites.back_default}}"></ion-img>
+      </ion-slide>
+      <ion-slide>
+        <ion-img src="{{pokeData?.sprites.front_shiny}}"></ion-img>
+      </ion-slide>
+      <ion-slide>
+        <ion-img src="{{pokeData?.sprites.back_shiny}}"></ion-img>
+      </ion-slide>
+    </ion-slides>
 
+    <div>
+      <p class="stats">Altura: {{pokeData?.height}}</p>
+      <p class="stats">Peso: {{pokeData?.weight}}</p>
+    </div>
+
+    <div text-center>
+      <h2>Habilidades</h2>
+    </div>
+    <ion-list lines="inset">
+      <ion-item *ngFor="let abilitys of pokeData?.abilities">
+        <p>{{abilitys.ability.name| titlecase}}</p>
+      </ion-item>
+    </ion-list>
+
+    <div text-center>
+      <h2>Movimientos</h2>
+    </div>
+    <ion-list lines="inset">
+      <ion-item *ngFor="let habilidad of pokeData?.moves">
+        <ion-label>{{habilidad.move.name| titlecase}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>

@@ -8,9 +8,11 @@ import { TabsPageRoutingModule } from './tabs.router.module';
 import { TabsPage } from './tabs.page';
 import { PokeListPageModule } from '../poke-list/poke-list.module';
 import { PokeStatsPageModule } from '../poke-stats/poke-stats.module';
+import { PokeFavoritesPageModule } from '../poke-favorites/poke-favorites.module';
 
 @NgModule( {
   imports: [
+    PokeFavoritesPageModule,
     PokeStatsPageModule,
     PokeListPageModule,
     IonicModule,

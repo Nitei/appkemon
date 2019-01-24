@@ -8,9 +8,7 @@
   <ion-list lines="inset">
     <ion-item-sliding *ngFor="let pokemon of lista?.results; let indice = index">
       <ion-item href="/tabs/(pokelist:pokestats/{{indice+1}}/{{pokemon.name}})">
-        <ion-avatar slot="start">
-          <img src="{{urlAvatar}}{{indice+1}}.png">
-        </ion-avatar>
+        <ion-img class="imgList" src="{{urlAvatar}}{{indice+1}}.png"></ion-img>
         <ion-label>{{pokemon.name | titlecase}}</ion-label>
       </ion-item>
 

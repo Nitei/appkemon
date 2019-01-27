@@ -21,7 +21,7 @@ export class PokeService {
           const obj = { id: i + 1 };
           Object.assign( infoResults[ i ], obj );
         }
-        return items;
+        return infoResults;
       } );
   }
 

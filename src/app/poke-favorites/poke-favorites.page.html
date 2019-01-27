@@ -11,7 +11,7 @@
   <ion-grid>
     <ion-row>
       <ion-col size-xs="4" *ngFor="let favId of arrayFavoritos">
-        <ion-img src="{{urlAvatar}}{{favId}}.png"></ion-img>
+        <ion-img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{favId}}.png"></ion-img>
         <ion-buttons>
           <ion-button slot="start" size="small" color="primary" href="/tabs/(pokefavorites:pokestats/{{favId}})">
             <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>

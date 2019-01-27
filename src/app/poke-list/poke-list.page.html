@@ -5,16 +5,18 @@
 </ion-header>
 
 <ion-content slot="start">
+
   <ion-list lines="inset">
-    <ion-item-sliding *ngFor="let pokemon of lista?.results; let indice = index">
-      <ion-item href="/tabs/(pokelist:pokestats/{{indice+1}}/{{pokemon.name}})">
-        <ion-img class="imgList" src="{{urlAvatar}}{{indice+1}}.png"></ion-img>
-        <ion-label>{{pokemon.name | titlecase}}</ion-label>
+    <ion-item-sliding *ngFor="let pokemon of lista?.results">
+      <ion-item href="/tabs/(pokelist:pokestats/{{pokemon.id}}/{{pokemon.name}})">
+        <ion-img class="imgList" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png"></ion-img>
+        <ion-label>{{pokemon.id}} - {{pokemon.name | titlecase}}</ion-label>
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option (click)="favorite(indice+1)">Favorite</ion-item-option>
+        <ion-item-option (click)="setFavorite(pokemon.id)">Favorite</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
 </ion-content>

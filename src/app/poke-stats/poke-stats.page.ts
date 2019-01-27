@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokeService } from '../poke-service/poke.service';
 
@@ -7,10 +7,10 @@ import { PokeService } from '../poke-service/poke.service';
   templateUrl: './poke-stats.page.html',
   styleUrls: [ './poke-stats.page.sass' ],
 } )
-export class PokeStatsPage implements OnInit {
+export class PokeStatsPage {
   pokeId: string;
   pokeName: string;
-  pokeData: object;
+  pokeDataFav: object;
 
   constructor ( private route: ActivatedRoute, private servicio: PokeService ) { }
 
@@ -18,11 +18,7 @@ export class PokeStatsPage implements OnInit {
     this.pokeId = this.route.snapshot.params.id;
     this.pokeName = this.route.snapshot.params.nombre;
 
-    this.servicio.getData( `https://pokeapi.co/api/v2/pokemon/${ this.pokeId }` )
-      .subscribe( data => { this.pokeData = data; } );
+    this.servicio.getData( `https://pokeapi.co/api/v2/pokemon/${ this.pokeId }/` )
+      .then( data => { this.pokeDataFav = data; } );
   }
-
-  ngOnInit() {
-  }
-
 }

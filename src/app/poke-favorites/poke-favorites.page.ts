@@ -7,15 +7,15 @@ import { PokeService } from '../poke-service/poke.service';
   styleUrls: [ './poke-favorites.page.sass' ],
 } )
 export class PokeFavoritesPage {
-  arrayFavoritos: number[];
+  private arrayFavoritos: number[];
 
   constructor ( private servicio: PokeService ) { }
 
-  removeFav( fav: number ) {
+  removeFav( fav: number ): void {
     this.servicio.setPokeFavorites( fav );
   }
 
-  ionViewWillEnter() {
+  ionViewWillEnter(): void {
     this.arrayFavoritos = this.servicio.pokeFavorites;
   }
 

@@ -8,15 +8,13 @@ import { PokeService } from '../poke-service/poke.service';
   styleUrls: [ './poke-stats.page.sass' ],
 } )
 export class PokeStatsPage {
-  pokeId: string;
-  pokeName: string;
-  pokeDataFav: object;
+  private pokeId: string;
+  private pokeDataFav: object;
 
   constructor ( private route: ActivatedRoute, private servicio: PokeService ) { }
 
-  ionViewWillEnter() {
+  ionViewWillEnter(): void {
     this.pokeId = this.route.snapshot.params.id;
-    this.pokeName = this.route.snapshot.params.nombre;
 
     this.servicio.getData( `https://pokeapi.co/api/v2/pokemon/${ this.pokeId }/` )
       .then( data => { this.pokeDataFav = data; } );

@@ -22,7 +22,7 @@ export const routes: Routes = [
         component: PokeListPage,
       },
       {
-        path: 'pokestats/:id/:nombre',
+        path: 'pokestats/:id',
         outlet: 'pokelist',
         component: PokeStatsPage,
       },

@@ -7,22 +7,24 @@ import { HttpClient } from '@angular/common/http';
 export class PokeService {
 
   public pokeFavorites = [];
+  public arrayPokeNameId: object[];
 
   constructor ( private http: HttpClient ) { }
 
-  getDataWithId( url: string ): Promise<object> {
-    return this.http.get( `${ url }` )
-      .toPromise()
-      .then( items => {
-        // El servidor envia "Object.results" que contiene las propiedades
-        // "name" y "url" nosotros le agregaremos el "id" del pokémon.
-        const infoResults = items.results; // <- RUNTIME.
-        for ( let i = 0; i < infoResults.length; i++ ) {
-          const obj = { id: i + 1 };
-          Object.assign( infoResults[ i ], obj );
-        }
-        return infoResults;
-      } );
+  getDataWithId( url: string ): Promise<Array<object>> {
+    if ( this.arrayPokeNameId === undefined ) {
+      return this.http.get( `${ url }` )
+        .toPromise()
+        .then( items => {
+          // We just need the array of pokemons names and ids.
+          const infoResults = items.results; // <- exist in RUNTIME.
+          for ( let i = 0; i < infoResults.length; i++ ) {
+            delete infoResults[ i ].url;
+            Object.assign( infoResults[ i ], { id: i + 1 } );
+          }
+          return this.arrayPokeNameId = infoResults;
+        } );
+    }
   }
 
   getData( url: string ): Promise<object> {

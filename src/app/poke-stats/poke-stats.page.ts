@@ -17,7 +17,7 @@ export class PokeStatsPage {
     this.servicio.setPokeFavorites( fav );
   }
 
-  getDataId( id: number ) {
+  getDataId( id: number ): void {
     this.pokeId = id;
     this.servicio.getData( `https://pokeapi.co/api/v2/pokemon/${ this.pokeId }/` )
       .then( data => { this.pokeDataFav = data; console.log( data ); } );

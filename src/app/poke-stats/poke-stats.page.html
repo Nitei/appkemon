@@ -9,9 +9,25 @@
 
 <ion-content>
   <ion-card>
-    <div text-center>
-      <h1>{{ pokeDataFav?.name | titlecase }}</h1>
-    </div>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="2" text-center>
+          <ion-button (click)="getDataId(pokeDataFav?.id-1)" size="small" href="/tabs/(pokestats:pokestats/{{pokeDataFav?.id-1}})">
+            <h5>{{pokeDataFav?.id - 1}}</h5>
+          </ion-button>
+        </ion-col>
+        <ion-col size="8" text-center>
+          <h5>{{pokeDataFav?.id}} - {{ pokeDataFav?.name | titlecase }}</h5>
+        </ion-col>
+        <ion-col (click)="getDataId(pokeDataFav.id+1)" size="2" text-center>
+          <ion-button size="small" href="/tabs/(pokestats:pokestats/{{pokeDataFav?.id+1}})">
+            <h5>{{pokeDataFav?.id + 1}}</h5>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
     <ion-slides pager>
       <ion-slide>
         <ion-img class="imgStats" src="{{pokeDataFav?.sprites.front_default}}"></ion-img>
@@ -26,10 +42,13 @@
         <ion-img class="imgStats" src="{{pokeDataFav?.sprites.back_shiny}}"></ion-img>
       </ion-slide>
     </ion-slides>
-
+    <ion-button size="small" (click)="setFavorite(pokeDataFav?.id)">
+      <ion-icon slot="icon-only" name="heart"></ion-icon>
+    </ion-button>
     <div>
       <p class="stats">Altura: {{pokeDataFav?.height}}</p>
       <p class="stats">Peso: {{pokeDataFav?.weight}}</p>
+      <p class="stats" *ngFor="let tipo of pokeDataFav?.types;let indice = index">Tipo {{indice+1}}: {{tipo.type.name}}</p>
     </div>
 
     <div text-center>

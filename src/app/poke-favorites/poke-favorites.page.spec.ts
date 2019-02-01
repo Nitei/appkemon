@@ -1,24 +1,24 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PokeListPage } from './poke-list.page';
+import { PokeFavoritesPage } from './poke-favorites.page';
 import { HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
 
-describe( 'PokeListPage', () => {
-  let component: PokeListPage;
-  let fixture: ComponentFixture<PokeListPage>;
+describe( 'PokeFavoritesPage', () => {
+  let component: PokeFavoritesPage;
+  let fixture: ComponentFixture<PokeFavoritesPage>;
 
   beforeEach( async( () => {
     TestBed.configureTestingModule( {
-      declarations: [ PokeListPage ],
+      declarations: [ PokeFavoritesPage ],
       imports: [ HttpClientModule ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
-    } ).compileComponents();
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+    } )
+      .compileComponents();
   } ) );
 
   beforeEach( () => {
-    fixture = TestBed.createComponent( PokeListPage );
+    fixture = TestBed.createComponent( PokeFavoritesPage );
     component = fixture.componentInstance;
     fixture.detectChanges();
   } );

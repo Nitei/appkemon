@@ -10,7 +10,6 @@ import { PokeListPage } from './poke-list.page';
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild( [ { path: '', component: PokeListPage } ] )
   ],
   declarations: [ PokeListPage ]
 } )

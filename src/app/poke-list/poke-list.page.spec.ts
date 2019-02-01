@@ -2,6 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PokeListPage } from './poke-list.page';
+import { HttpClientModule } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 describe( 'PokeListPage', () => {
   let component: PokeListPage;
@@ -10,7 +12,8 @@ describe( 'PokeListPage', () => {
   beforeEach( async( () => {
     TestBed.configureTestingModule( {
       declarations: [ PokeListPage ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      imports: [ HttpClientModule ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     } ).compileComponents();
   } ) );
 

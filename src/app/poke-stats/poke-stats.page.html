@@ -22,16 +22,16 @@
           <h5>{{pokeDataFav?.id}} - {{ pokeDataFav?.name | titlecase }}</h5>
           <ion-slides pager>
             <ion-slide>
-              <ion-img class="imgStats" src="{{pokeDataFav?.sprites.front_default}}"></ion-img>
+              <ion-img class="imgStats" [src]="pokeDataFav?.sprites.front_default"></ion-img>
             </ion-slide>
             <ion-slide>
-              <ion-img class="imgStats" src="{{pokeDataFav?.sprites.back_default}}"></ion-img>
+              <ion-img class="imgStats" [src]="pokeDataFav?.sprites.back_default"></ion-img>
             </ion-slide>
             <ion-slide>
-              <ion-img class="imgStats" src="{{pokeDataFav?.sprites.front_shiny}}"></ion-img>
+              <ion-img class="imgStats" [src]="pokeDataFav?.sprites.front_shiny"></ion-img>
             </ion-slide>
             <ion-slide>
-              <ion-img class="imgStats" src="{{pokeDataFav?.sprites.back_shiny}}"></ion-img>
+              <ion-img class="imgStats" [src]="pokeDataFav?.sprites.back_shiny"></ion-img>
             </ion-slide>
           </ion-slides>
         </ion-col>

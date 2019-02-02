@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ToastController } from '@ionic/angular';
 
 @Injectable( {
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class PokeService {
   public pokeFavorites = [];
   public arrayPokeNameId: object[];
 
-  constructor ( private http: HttpClient ) { }
+  constructor ( private http: HttpClient, private toastController: ToastController ) { }
 
   getDataWithId( url: string ): Promise<Array<object>> {
     if ( this.arrayPokeNameId === undefined ) {
@@ -30,7 +31,7 @@ export class PokeService {
     return this.http.get( `${ url }` ).toPromise();
   }
 
-  setPokeFavorites( fav: number ): void {
+  async setPokeFavorites( fav: number ) {
     /* Pokémon "id" not exist in pokeFavorites? then push pokémon "id" */
     this.pokeFavorites.includes( fav )
       ? this.pokeFavorites
@@ -39,6 +40,23 @@ export class PokeService {
       : this.pokeFavorites
         .push( fav ); this.pokeFavorites
           .sort( ( a, b ) => a - b );
+    if ( this.pokeFavorites.includes( fav ) ) {
+      const addedFav = await this.toastController.create( {
+        message: 'Added from favourites',
+        position: 'top',
+        duration: 2000,
+        animated: true
+      } );
+      return addedFav.present();
+    } else {
+      const removedFav = await this.toastController.create( {
+        message: 'Removed from favourites',
+        position: 'top',
+        duration: 2000,
+        animated: true
+      } );
+      return removedFav.present();
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PokeService } from '../poke-service/poke.service';
+import { ToastController } from '@ionic/angular';
 
 @Component( {
   selector: 'app-poke-list',
@@ -14,7 +15,7 @@ export class PokeListPage {
   private readonly limit = 807; // Until pokémon number
   private readonly urlMas = `https://pokeapi-215911.firebaseapp.com/api/v2/pokemon/?offset=${ this.offset }&limit=${ this.limit }`;
 
-  constructor ( private servicio: PokeService ) { }
+  constructor ( private servicio: PokeService, private toastController: ToastController ) { }
 
   ionViewWillEnter(): void {
     /*  To avoid calling the server every time the PokeList component's
@@ -26,7 +27,7 @@ export class PokeListPage {
     }
   }
 
-  setFavorite( fav ): void {
+  setFavorite( fav: number ): void {
     this.servicio.setPokeFavorites( fav );
   }
 

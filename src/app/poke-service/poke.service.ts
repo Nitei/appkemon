@@ -17,12 +17,11 @@ export class PokeService {
         .toPromise()
         .then( items => {
           const stack: any = items;
-          const infoResults = stack.results;
-          for ( let i = 0; i < infoResults.length; i++ ) {
-            delete infoResults[ i ].url;
-            Object.assign( infoResults[ i ], { id: i + 1 } );
+          for ( let i = 0; i < stack.results.length; i++ ) {
+            delete stack.results[ i ].url;
+            Object.assign( stack.results[ i ], { id: i + 1 } );
           }
-          return this.arrayPokeNameId = infoResults;
+          return this.arrayPokeNameId = stack.results;
         } );
     }
   }
@@ -32,16 +31,14 @@ export class PokeService {
   }
 
   setPokeFavorites( fav: number ): void {
-    /* If the pokémon "id" already not exist in the array of favorites push the pokémon "id" */
-    if ( this.pokeFavorites.includes( fav ) ) {
-      this.pokeFavorites
+    /* Pokémon "id" not exist in pokeFavorites? then push pokémon "id" */
+    this.pokeFavorites.includes( fav )
+      ? this.pokeFavorites
         .splice( this.pokeFavorites
-          .indexOf( fav ), 1 );
-    } else {
-      this.pokeFavorites
+          .indexOf( fav ), 1 )
+      : this.pokeFavorites
         .push( fav ); this.pokeFavorites
           .sort( ( a, b ) => a - b );
-    }
   }
 }
 

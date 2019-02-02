@@ -31,21 +31,15 @@ export class PokeListPage {
   }
 
   search( event ): void {
-    let valueSearchbar: any = event.target.value.toLowerCase();
+    const valueSearchbar: string = event.target.value.toLowerCase();
     valueSearchbar !== ''
       ? this.searchbarHidden = true
       : this.searchbarHidden = false;
-    if ( !isNaN( valueSearchbar ) ) { valueSearchbar = Number( valueSearchbar ); }
     const searchResults = [];
-    for ( const idx in this.lista ) {
-      if ( this.lista.hasOwnProperty( idx ) ) {
-        const pokemon = this.lista[ idx ];
-        // We push the pokemon if it does not exist in the searchResults
-        if ( pokemon.name.includes( valueSearchbar )
-          || pokemon.id === ( valueSearchbar )
-          && !searchResults.includes( valueSearchbar ) ) {
-          searchResults.push( pokemon );
-        }
+    for ( const pokemon of this.lista ) {
+      if ( pokemon.name.includes( valueSearchbar )
+        || pokemon.id.toString().includes( valueSearchbar ) ) {
+        searchResults.push( pokemon );
       }
     }
     this.arrayFinded = searchResults;

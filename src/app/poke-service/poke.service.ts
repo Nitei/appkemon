@@ -16,13 +16,12 @@ export class PokeService {
     if ( this.arrayPokeNameId === undefined ) {
       return this.http.get( `${ url }` )
         .toPromise()
-        .then( items => {
-          const stack: any = items;
-          for ( let i = 0; i < stack.results.length; i++ ) {
-            delete stack.results[ i ].url;
-            Object.assign( stack.results[ i ], { id: i + 1 } );
+        .then( ( items: any ) => {
+          for ( let i = 0; i < items.results.length; i++ ) {
+            delete items.results[ i ].url;
+            Object.assign( items.results[ i ], { id: i + 1 } );
           }
-          return this.arrayPokeNameId = stack.results;
+          return this.arrayPokeNameId = items.results;
         } );
     }
   }
